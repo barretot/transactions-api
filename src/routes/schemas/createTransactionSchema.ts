@@ -6,8 +6,8 @@ export const createTransaction = {
       type: 'object',
       required: ['title', 'amount', 'type'],
       properties: {
-        title: { type: 'string' },
-        amount: { type: 'number' },
+        title: { type: 'string', example: 'Freelancer' },
+        amount: { type: 'number', example: 2000 },
         type: {
           type: 'string',
           enum: ['credit', 'debit'],
@@ -17,15 +17,6 @@ export const createTransaction = {
     response: {
       201: {
         description: 'Transação criada com sucesso',
-        type: 'object',
-        properties: {
-          title: { type: 'string' },
-          amount: { type: 'number' },
-          type: {
-            type: 'string',
-            enum: ['credit', 'debit'],
-          },
-        },
       },
     },
   },

@@ -5,16 +5,17 @@
       "type": "node",
       "request": "launch",
       "name": "Debug API com TSX",
-      "runtimeExecutable": "npm",
+      "runtimeExecutable": "node",
       "runtimeArgs": [
-        "run",
-        "dev"
+        "--inspect", 
+        "./node_modules/.bin/tsx",
+        "src/server.ts"
       ],
       "sourceMaps": true,
       "skipFiles": ["<node_internals>/**"],
-      "envFile": "${workspaceFolder}/.env",
+      "envFile": "${workspaceFolder}/.env", 
       "cwd": "${workspaceFolder}",
-      "console": "integratedTerminal"
+      "console": "integratedTerminal",
     }
   ]
 }

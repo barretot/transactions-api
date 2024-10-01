@@ -1,13 +1,28 @@
 import fastify from 'fastify'
+import cookie from '@fastify/cookie'
 import { env } from './env'
 import { transactionRoutes } from './routes/transaction'
 import swagger from '@fastify/swagger'
 import swaggerUi from '@fastify/swagger-ui'
 
-const app = fastify({ logger: true })
+const app = fastify({
+  logger: true,
+  ajv: {
+    customOptions: {
+      strict: false,
+    },
+  },
+})
+
+app.register(cookie)
+
+app.addHook('preHandler', async (request) => {
+  console.log(`[${request.method}] ${request.url}`)
+}) // Middleware global
 
 app.register(swagger, {
-  swagger: {
+  openapi: {
+    openapi: '3.0.0',
     info: {
       title: 'API Documentation',
       description: 'API Transactions Documentation',
@@ -19,7 +34,7 @@ app.register(swagger, {
 app.register(swaggerUi, {
   routePrefix: '/docs',
   uiConfig: {
-    docExpansion: 'full',
+    docExpansion: 'list',
     deepLinking: false,
   },
   uiHooks: {
