@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import { app } from '../src/server'
+import { app } from '../src/app'
 import {} from 'supertest'
 
 test(' User consegue criar uma nova transaction', () => {
