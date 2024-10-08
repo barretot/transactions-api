@@ -50,5 +50,5 @@ app.register(swaggerUi, {
 })
 
 app.register(transactionRoutes, {
-  prefix: 'transactions',
+  prefix: '/transactions',
 })
